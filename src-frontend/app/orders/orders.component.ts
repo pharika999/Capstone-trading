@@ -11,18 +11,33 @@ import { LocalStorageService } from '../services/localStorage.service';
 export class OrdersComponent implements OnInit {
 
   clients:any;
-  selectedClient:any;
+  selectedBuyClient:any;
   selectedClientBuyOrders:any;
   buyOrders:any;
+  selectedSellClient:any;
+  selectedClientSellOrders:any;
+  sellOrders:any;
 
   constructor(private dataSvc:DataService,private storageService:LocalStorageService) { }
 
   ngOnInit(): void {
-    this.dataSvc.getDataFromApi('http://localhost:8080/buyOrders/custodianid/'+this.storageService.get('custodian'))
+    this.dataSvc.getDataFromApi('http://localhost:8080/buyOrder/custodianid/'+this.storageService.get('custodian'))
         .subscribe((result: any) => {
           //console.log(result);
            this.buyOrders=result;
            this.selectedClientBuyOrders=result;
+           console.log(this.buyOrders);
+           //console.log(result);
+          },(err:any)=>{
+            console.log(err);
+          })
+
+          this.dataSvc.getDataFromApi('http://localhost:8080/sellOrder/custodianid/'+this.storageService.get('custodian'))
+        .subscribe((result: any) => {
+          //console.log(result);
+           this.sellOrders=result;
+           this.selectedClientSellOrders=result;
+           console.log(this.sellOrders);
            //console.log(result);
           },(err:any)=>{
             console.log(err);
@@ -36,13 +51,13 @@ export class OrdersComponent implements OnInit {
             console.log(err);
           })
   }
-  onChangeClient(event:any){
-    this.selectedClient=event.target.value;
+  onChangeBuyClient(event:any){
+    this.selectedBuyClient=event.target.value;
     console.log("selected",event.target.value);
-    if(this.selectedClient=="All")
+    if(this.selectedBuyClient=="All")
     this.selectedClientBuyOrders=this.buyOrders;
     else {
-      this.dataSvc.getDataFromApi('http://localhost:8080/buyOrder/clientid/'+this.selectedClient)
+      this.dataSvc.getDataFromApi('http://localhost:8080/buyOrder/clientid/'+this.selectedBuyClient)
       .subscribe((result: any) => {
         console.log(result);
          this.selectedClientBuyOrders=result;
@@ -51,5 +66,22 @@ export class OrdersComponent implements OnInit {
           console.log(err);
         })
     }
+  }
+  onChangeSellClient(event:any){
+    this.selectedSellClient=event.target.value;
+    console.log("selected",event.target.value);
+    if(this.selectedSellClient=="All")
+    this.selectedClientBuyOrders=this.buyOrders;
+    else {
+      this.dataSvc.getDataFromApi('http://localhost:8080/sellOrder/clientid/'+this.selectedSellClient)
+      .subscribe((result: any) => {
+        console.log(result);
+         this.selectedClientSellOrders=result;
+         console.log(result);
+        },(err:any)=>{
+          console.log(err);
+        })
+      }
+
   }
 }

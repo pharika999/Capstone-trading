@@ -1,0 +1,40 @@
+.ntable {
+    margin-top: 1%;
+    align-items: center;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.head {
+    padding-top: 40px;
+    text-align: center;
+}
+
+th {
+    font-size: medium;
+}
+
+h1 {
+    font-weight: bolder;
+    color: rgb(0, 76, 143);
+}
+
+.table-bordered {
+    border: 3px solid rgba(0, 76, 143, 0.5);
+}
+
+th, td {
+    padding: 10px;
+    letter-spacing: 1px;
+}
+
+h1 {
+    letter-spacing: 1px;
+}
+
+.float {
+    float: right;
+    width: 17%;
+    margin: 15px;
+}
