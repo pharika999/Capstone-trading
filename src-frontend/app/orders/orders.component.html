@@ -18,6 +18,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Remaining Quantity</th>
                 <th scope="col">Status</th>
             </tr>
         </thead>
@@ -27,7 +28,20 @@
                 <td>{{t.price}}</td>
                 <td>{{t.quantity}}</td>
                 <td>{{t.price*t.quantity}}</td>
-                <td>{{t.status}}</td>
+                <td>{{t.remainingquantity}}</td>
+                <div *ngIf="t.status=='Completed' then green else red"></div>
+                <ng-template #green>
+                    <td style="background-color: green; color: white;">{{t.status}}</td>
+                </ng-template>
+                <ng-template #red>
+                    <div *ngIf="t.status=='Waiting' then showRed else yellow"></div>
+                    <ng-template #showRed>
+                        <td style="background-color: rgb(182, 44, 44); color: white;">{{t.status}}</td>
+                    </ng-template>
+                    <ng-template #yellow>
+                        <td style="background-color: yellow; color: black;">{{t.status}}</td>
+                    </ng-template>
+                </ng-template>
             </tr>
             
         </tbody>
@@ -48,6 +62,7 @@
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Amount</th>
+            <th scope="col">Remaining Quantity</th>
             <th scope="col">Status</th>
         </tr>
     </thead>
@@ -57,7 +72,20 @@
             <td>{{t.price}}</td>
             <td>{{t.quantity}}</td>
             <td>{{t.price*t.quantity}}</td>
-            <td>{{t.status}}</td>
+            <td>{{t.remainingquantity}}</td>
+            <div *ngIf="t.status=='Completed' then green else red"></div>
+                <ng-template #green>
+                    <td style="background-color: green; color: white;">{{t.status}}</td>
+                </ng-template>
+                <ng-template #red>
+                    <div *ngIf="t.status=='Waiting' then showRed else yellow"></div>
+                    <ng-template #showRed>
+                        <td style="background-color: rgb(182, 44, 44); color: white;">{{t.status}}</td>
+                    </ng-template>
+                    <ng-template #yellow>
+                        <td style="background-color: yellow; color: black;">{{t.status}}</td>
+                    </ng-template>
+                </ng-template>
         </tr>
     </tbody>
 </table>

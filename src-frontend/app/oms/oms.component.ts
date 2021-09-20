@@ -100,6 +100,9 @@ export class OmsComponent implements OnInit {
   handleSubmit() {
     if(this.quantity==0||this.quantity%25!=0||this.quantity>100)
     alert("Check quantity. Please try again!");
+    else if(this.checkPrice()==0){
+      alert("Check price and try again!")
+    }
     else
     {
     console.log(this.submitb)
@@ -133,8 +136,10 @@ export class OmsComponent implements OnInit {
     this.datasvc.postApi(url, payload)
     .subscribe((result:any) => {
       console.log(result.message);
+      alert(result.message);
     }, (err:any) => {
       console.log("Hi",err.message);
+      alert(err.message);
     })
   }
   else
@@ -146,9 +151,6 @@ export class OmsComponent implements OnInit {
       return 0;
     }
     else return 1;
-
- 
-
   }
 
  
