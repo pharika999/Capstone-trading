@@ -1,0 +1,36 @@
+<form action="" method=""  (ngSubmit)="handleLogin()">
+    <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto gradient"  style="height: 713px;">
+        <div class="card card0 border-0">
+            <div class="row d-flex">
+                <div class="col-lg-6">
+                    <div class="card1 pb-5">
+                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img
+                                src="https://www.spectrum-markets.com/sites/default/files/inline-images/Diagram%201_Transparent_BK%20%282%29.gif" class="image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card2 card border-0 px-4 py-5">
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h5 class="mb-0">Custodian ID</h5>
+                            </label>
+                            <input class="mb-4" type="text" name="custodianid" autocomplete="off" 
+                            placeholder="Enter User ID" size="40" [(ngModel)]="custodian.custodianid">
+                        </div>
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h5 class="mb-0">Password</h5>
+                            </label>
+                            <input class="mb-4" type="password" name="password" 
+                            placeholder="Enter Password" size="40" [(ngModel)]="custodian.password">
+                        </div>
+                        <div class="row mb-3 px-3 pad"> 
+                            <button type="submit" class="btn btn-blue text-center">LOGIN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>

@@ -1,0 +1,107 @@
+<app-header></app-header>
+
+
+<div class="container-fluid head">
+    <h1>List of Orders</h1>
+</div>
+<div class="container-fluid ntable">
+    <div class="pad">
+        <select class="form-select float" (change)="onChangeClient($event)">
+            <option>All</option>
+            <option value="{{c.clientid}}" *ngFor="let c of clients">{{c.clientid}}</option>
+        </select>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Buyer Order ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container-fluid ntable">
+    <div class="pad">
+        <select class="form-select float">
+            <option>Client 1</option>
+            <option>Client 2</option>
+            <option>Client 3</option>
+        </select>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Seller Order ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DBS001</td>
+                <td>MACQUARIE BANK LIMITED</td>
+                <td>14000000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

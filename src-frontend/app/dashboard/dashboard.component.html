@@ -1,0 +1,72 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="print-content">
+            <form>
+                <button onclick="window.print()" class="btn btn-info print"> Print </button>
+            </form>
+        </div>
+    </div>
+</div>
+<form action="">
+    <div class="container-fluid head first">
+    <h1>Custodian Details</h1>
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label for="custodianid" class="form-label mt-4">Custodian ID</label>
+                <input type="text" class="form-control" id="custodianid" name="custodianid"  [(ngModel)]="custodian.custodianid"readonly>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label for="custodianname" class="form-label mt-4" >Custodian Name</label>
+                <input type="text" class="form-control" id="custodianname" [(ngModel)]="custodian.custodianname" name="custodianname" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid head">
+    <h1>List of Clients</h1>
+</div>
+
+<div class="container-fluid ntable">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Client ID</th>
+                <th scope="col">Client Name</th>
+                <th scope="col">Total Transaction Limit</th>
+                <th scope="col">Remaining Transaction Limit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of clients;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{c.clientid}}</td>
+                <td>{{c.clientname}}</td>
+                <td>{{c.transactionlimit}}</td>
+                <td>{{c.remainingtransactionlimit}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+</div>
+</form>
+<footer class="float">
+    <div>
+        <nav class="navbar navbar-expand-lg hdfc">
+            <div class="container-fluid hdfc">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item text font">© Copyright 2021</li>
+                    <li class="nav-item text font">Terms and Conditions</li>
+                    <li class="nav-item text font">Privacy Policy</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</footer>

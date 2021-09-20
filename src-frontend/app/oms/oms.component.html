@@ -1,0 +1,96 @@
+<app-header></app-header>
+
+ 
+
+<div class="container-fluid center">
+    <form class="form-group" ngNativeValidate (ngSubmit)="handleSubmit()" >
+        <fieldset>
+            <legend class="middle">OMS - Order Matching System</legend>
+            <div class="container-fluid">
+                <div class="form-group">
+                    <label for="clientid" class="form-label mt-4">Client ID</label>
+                    <!-- <select class="form-select" id="clientid" name="clientid">
+                        <option selected>-- Please select Client ID --</option>
+                        <option>DBS001</option>
+                        <option>DBS002</option>
+                        <option>DBS003</option>
+                        <option>DBS004</option>
+                    </select> -->
+                    <select class="form-select" name ="clientid" id="clientid" (change)="onClientChange(selected)" #selected required>
+                        <option value="">select client</option>
+                        <option *ngFor="let client of omsData.clients">{{client.clientid}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="clientname" class="form-label mt-4">Client Name</label>
+                    <input type="text" class="form-control" name ="clientname" id="clientname" placeholder="Enter Client Name"
+                        name="clientname" readonly [(ngModel)]="omsData.clientname">
+                </div>
+                <div class="form-group">
+                    <label for="instrumentid" class="form-label mt-4" required>Instrument ID</label>
+                    <!-- <select class="form-select" id="instrumentid" name="instrumentid">
+                        <option selected>-- Please select Instrument ID --</option>
+                        <option>I001</option>
+                        <option>I002</option>
+                        <option>I003</option>
+                        <option>I004</option>
+                    </select> -->
+                    <select class="form-select" name ="instrumentid" id="instrumentid" (change)="onInstrumentChange(selected1)" #selected1 required>
+                        <option value="">select Instrument ID</option>
+                        <option *ngFor="let ins of omsData.instruments">{{ins.instrumentid}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="instrumentname" class="form-label mt-4">Instrument Name</label>
+                    <input type="text" class="form-control" name ="instrumentname" id="instrumentname" placeholder="Enter Instrument Name"
+                        name="instrumentname" readonly [(ngModel)]="omsData.instrumentname">
+                </div>
+                <div class="form-group">
+                    <label for="facevalue" class="form-label mt-4">FaceValue for Instrument</label>
+                    <input type="number" class="form-control" name ="facevalue" id="facevalue" placeholder="Enter Face Value for Instrument"
+                        name="facevalue" [(ngModel)]="omsData.facevalue" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="expirydate" class="form-label mt-4">Expiry Date for Instrument</label>
+                    <input type="text" class="form-control"  name ="expirydate" id="expirydate" placeholder="Enter Expiry Date for Instrument"
+                        name="expirydate" [(ngModel)]="omsData.expirydate" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="price" class="form-label mt-4">Price for Instrument</label>
+                    <input type="number" class="form-control" name ="price" id="price" placeholder="Enter Price for Instrument"
+                        name="price" [(ngModel)]="price" (mouseleave)="checkPrice()" required>
+                        <ng-template [ngIf]="checkPrice()==0"><div class="text-danger">Price cannot be more or less than 12% of facevalue</div></ng-template>
+                </div>
+                <div class="form-group">
+                    <label for="quantity" class="form-label mt-4">Quantity</label>
+                    <input type="number" class="form-control" name ="quantity" id="quantity" placeholder="Enter Quantity" name="quantity"
+                        [(ngModel)]="quantity" (change)="checkQuantity()" required>
+                        <ng-template [ngIf]="checkQuantity()==1"><div class="text-danger">Please enter only multiples of 25</div></ng-template>
+                        <ng-template [ngIf]="checkQuantity()==2"><div class="text-danger">Please enter value less than 100</div></ng-template>
+                </div>
+                <div class="form-group">
+                    <label for="direction" class="form-label mt-4">Direction</label>
+                    <select class="form-select" id="direction" name="direction" (change)="directionValue()"
+                        [(ngModel)]="direction" required>
+                        <option selected>----</option>
+                        <option value="1" name="buy"> Buy </option>
+                        <option value="2" name="sell"> Sell </option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-block middle top mb-5 mt-4">
+                <button type="submit" class="btn btn-success pad form-control" ngDefaultControl   name="trade"  [(ngModel)]="submitb" value="trade"
+                    > {{submitb}} </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+ 
+
+                    <div *ngIf="submitb=='Buy' then showBuy"></div>
+                    <div *ngIf="submitb=='Sell' then showSell"></div>
+                    <ng-template #showBuy><img src="../assets/buy3.gif" /></ng-template>
+                    <ng-template #showSell><img src="../assets/sell3.png" /></ng-template>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-danger pad" type="reset">Cancel</button>
+                </div>
+        </fieldset>
+    </form>
+</div>

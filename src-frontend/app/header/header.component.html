@@ -1,0 +1,47 @@
+<div>
+    <nav class="navbar navbar-expand-lg hdfc">
+        <div class="container-fluid hdfc">
+            <a class="navbar-brand"><img src="../assets/stock2.png"/></a>
+            <button class="navbar-toggler btn-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><img src="https://img.icons8.com/ios/30/ffffff/menu--v4.png" /></span>
+            </button>
+            <div class="collapse navbar-collapse center" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text zoom" href="#" [routerLink]="['/dashboard']"
+                            title="View Dashboard">DASHBOARD
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text zoom" href="#" [routerLink]="['/oms']"
+                            title="Order Matching System">OMS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text zoom" href="#" [routerLink]="['/tradinghistory']"
+                            title="View Clients Trading History">TRADING
+                            HISTORY
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text zoom" href="#" [routerLink]="['/orders']"
+                            title="View list of Orders">ORDERS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text zoom" href="#" [routerLink]="['/report']"
+                            title="View Report">REPORT
+                        </a>
+                    </li>
+                </ul>
+                <li class="text newitem" style="font-weight: bolder;">{{currentDate|date:'hh:mm aa dd/MM/yyyy'}}</li>
+                <pre>  </pre>
+                <a class="nav-link newitem active text logout hover_red" href="#" (click)="onClickLogout()"> LOGOUT <i
+                        class="fa fa-power-off"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

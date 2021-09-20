@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="print-content">
+            <form>
+                <button onclick="window.print()" class="btn btn-info print"> Print </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid head">
+    <h1>Trading History of all Clients</h1>
+</div>
+<div class="container-fluid ntable">
+    <div class="pad">
+        <select class="form-select float" (change)="onChangeClient($event)">
+            <option>All</option>
+            <option value="{{c.clientid}}" *ngFor="let c of clients">{{c.clientid}}</option>
+        </select>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Trade ID</th>
+                <th scope="col">Trade Amount (INR)</th>
+                <th scope="col">Trade Date</th>
+                <th scope="col">Buyer OrderID</th>
+                <th scope="col">Seller OrderID</th>
+                <th scope="col">Price of each Stock</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of selectedClientTrade">
+                <td>{{t.tradeid}}</td>
+                <td>{{t.tradeamount}}</td>
+                <td>{{t.tradedate}}</td>
+                <td>{{t.bid.bid}}</td>
+                <td>{{t.sid.sellid}}</td>
+                <td>{{t.price}}</td>
+                <td>{{t.quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

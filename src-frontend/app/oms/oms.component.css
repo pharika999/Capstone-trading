@@ -1,0 +1,42 @@
+.center {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.middle {
+    text-align: center;
+    align-items: center;
+}
+
+.pad {
+    width: 20%;
+    font-weight: bold;
+}
+
+legend {
+    font-weight: bolder;
+}
+input[readonly]{
+    background-color: white;
+}
+label{
+    font-size: medium;
+}
+button,label{
+    letter-spacing: 1px;
+}
+.top{
+    padding-top: 20px;
+}
+option[selected]{
+    font-weight: lighter;
+}
+select[selected]{
+    font-weight: lighter;
+}
+
+img{
+    height: 100px;
+}
