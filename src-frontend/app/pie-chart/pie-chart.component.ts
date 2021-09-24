@@ -39,58 +39,58 @@ export class PieChartComponent implements OnInit {
   ngOnInit(): void {
     
 
-          this.getClientStocks();
-          this.dataSvc.getDataFromApi('http://localhost:8080/clientstocks/totalQuantity')
-          .subscribe((result: any) => {
-            console.log("total",result);
-            this.totalQuantity=result;
-                // this.dataSvc.getDataFromApi('http://localhost:8080/clientstocks/allClients')
-                // .subscribe((result: any) => {
-                //   console.log("all",result);
-                //   this.clientStocks=result;
-                // },(err:any)=>{
-                //   console.log(err);
-                // })
-          },(err:any)=>{
-            console.log(err);
-          }) 
+  //         this.getClientStocks();
+  //         this.dataSvc.getDataFromApi('http://localhost:8080/clientstocks/totalQuantity')
+  //         .subscribe((result: any) => {
+  //           console.log("total",result);
+  //           this.totalQuantity=result;
+  //               // this.dataSvc.getDataFromApi('http://localhost:8080/clientstocks/allClients')
+  //               // .subscribe((result: any) => {
+  //               //   console.log("all",result);
+  //               //   this.clientStocks=result;
+  //               // },(err:any)=>{
+  //               //   console.log(err);
+  //               // })
+  //         },(err:any)=>{
+  //           console.log(err);
+  //         }) 
 
-        }
-  getClientStocks(){
-    this.dataSvc.getDataFromApi('http://localhost:8080/clientstocks/allClients')
-    .subscribe((result: any) => {
-      console.log("all",result);
-      this.clientStocks=result;
-      this.getClients();
-    },(err:any)=>{
-      console.log(err);
-    })
+  //       }
+  // getClientStocks(){
+  //   this.dataSvc.getDataFromApi('http://localhost:8080/clientstocks/allClients')
+  //   .subscribe((result: any) => {
+  //     console.log("all",result);
+  //     this.clientStocks=result;
+  //     this.getClients();
+  //   },(err:any)=>{
+  //     console.log(err);
+  //   })
 
-  }
-  getClients(){
-    this.dataSvc.getDataFromApi('http://localhost:8080/clients/custodianid/'+this.storageService.get('custodian'))
-          .subscribe((result: any) => {
-            //console.log(result);
-            console.log(this.clientStocks);
-            this.clients=result;
-            console.log(this.clients);
-            this.clients.forEach((element:any) => {
-             // console.log(element);
-              //let isClientID = this.clientStocks.forEach(x=>x.clientid==element.clientid);
-              if(this.clientStocks.hasOwnProperty(element.clientid) )
-              {
-              element["Quantity"]=   this.clientStocks.get(element.clientid);   
-              console.log("Quantity",element["Quantity"]);
-              element["Percentage"]= (element["Quantity"]/this.totalQuantity.total)*100;
-              console.log("Percentage",element["Percentage"]);
-              }
-            });
-            console.log(this.clients);
-            console.log("Stocks=",this.clientStocks);
+  // }
+  // getClients(){
+  //   this.dataSvc.getDataFromApi('http://localhost:8080/clients/custodianid/'+this.storageService.get('custodian'))
+  //         .subscribe((result: any) => {
+  //           //console.log(result);
+  //           console.log(this.clientStocks);
+  //           this.clients=result;
+  //           console.log(this.clients);
+  //           this.clients.forEach((element:any) => {
+  //            // console.log(element);
+  //             //let isClientID = this.clientStocks.forEach(x=>x.clientid==element.clientid);
+  //             if(this.clientStocks.hasOwnProperty(element.clientid) )
+  //             {
+  //             element["Quantity"]=   this.clientStocks.get(element.clientid);   
+  //             console.log("Quantity",element["Quantity"]);
+  //             element["Percentage"]= (element["Quantity"]/this.totalQuantity.total)*100;
+  //             console.log("Percentage",element["Percentage"]);
+  //             }
+  //           });
+  //           console.log(this.clients);
+  //           console.log("Stocks=",this.clientStocks);
             
-          },(err:any)=>{
-            console.log(err);
-          })
+  //         },(err:any)=>{
+  //           console.log(err);
+  //         })
           
 
   }

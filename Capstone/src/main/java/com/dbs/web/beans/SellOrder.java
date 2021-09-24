@@ -49,7 +49,7 @@ public class SellOrder {
 	public void setClientid(Client clientid) {
 		this.clientid = clientid;
 	}
-	public String isStatus() {
+	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {

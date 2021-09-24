@@ -65,7 +65,6 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 				System.out.println(usernamePasswordAuthenticationToken);
 			}
 		}
-		// servlets, filter and listeners
 		filterChain.doFilter(request, response);
 	}
 	

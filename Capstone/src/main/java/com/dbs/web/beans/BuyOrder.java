@@ -52,7 +52,7 @@ public class BuyOrder {
 		this.clientid = clientid;
 	}
 
-	public String isStatus() {
+	public String getStatus() {
 		return status;
 	}
 

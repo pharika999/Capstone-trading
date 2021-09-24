@@ -1,5 +1,6 @@
 package com.dbs.web.services;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,26 @@ public class BuyOrderService {
 			return null; 
 		} 
 	}
-	
+	public List<BuyOrder> getBuyordersOfAllCustomers(String custId)
+	{
+	List<BuyOrder> buyorders = new ArrayList<BuyOrder>();
+	this.buyRepo.findAll().forEach(t->{
+	if(t.getClientid().getCustodian().getCustodianid().equals(custId))
+	buyorders.add(t);
+	});
+	System.out.println(buyorders.get(0).getStatus());
+	return buyorders;
+	}
+	public List<BuyOrder> getBuyordersByClientId(String clientId)
+	{
+	List<BuyOrder> buyorders = new ArrayList<BuyOrder>();
+	this.buyRepo.findAll().forEach(t->{
+	if(t.getClientid().getClientid().equals(clientId))
+	buyorders.add(t);
+
+	});
+	return buyorders;
+	}
 
 	public String insertBuyOrder(BuyOrder bo)    {
 		if(this.buyRepo.findById(bo.getBid()).isPresent())

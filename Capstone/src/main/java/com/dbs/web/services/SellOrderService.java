@@ -1,5 +1,6 @@
 package com.dbs.web.services;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,26 @@ public class SellOrderService {
     }
         catch(IllegalArgumentException e ) { return null; } 
     }
+
+    public List<SellOrder> getSellordersOfAllCustomers(String custId)
+    {
+        List<SellOrder> sellorders = new ArrayList<SellOrder>();
+        this.sellRepo.findAll().forEach(t->{
+            if(t.getClientid().getCustodian().getCustodianid().equals(custId))
+                sellorders.add(t);
+            });
+        return sellorders;
+    }
+     public List<SellOrder> getSellordersByClientId(String clientId)
+        {
+            List<SellOrder> sellorders = new ArrayList<SellOrder>();
+            this.sellRepo.findAll().forEach(t->{
+                if(t.getClientid().getClientid().equals(clientId))
+                    sellorders.add(t);
+               
+                });
+            return sellorders;
+        }
     
     public String insertSellOrder(SellOrder so)    {
         if(this.sellRepo.findById(so.getSellid()).isPresent())
